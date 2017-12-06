@@ -20,17 +20,28 @@ export class AllCampuses extends Component {
     }
 
     render () {
-        console.log('-------------', this.props)
+
         return (
-            <ul>
-                {
-                    this.props.campuses.map(campus => {
-                        return (
-                            <li key={campus.id}>{campus.name}</li>
-                        );
-                    })
-                }
-            </ul>
+            <div>
+                <button><Link to="/add-campus">Add Campus</Link></button>
+                <div className="campus-wrap">
+                    {
+                        this.props.campuses.map(campus => (
+                            <div className="campus-profile" key={campus.id}>
+                                <Link to={`/campuses/${campus.id}`}>
+                                    <img className="campus-image" src={campus.imageUrl}></img>
+                                </Link>
+                                <h2 className="campus-name">{campus.name}</h2>
+                                <h4 className="campus-description">{campus.description}</h4>
+                                <button>Delete {campus.name}</button>
+                            </div>
+                        ))
+                    }
+
+                </div>
+
+            </div>
+            
         )
     } 
 
@@ -41,8 +52,8 @@ const mapStateToProps = (state) => {
         campuses: state.campuses
     }
 }
-//SAM NOTE: When you have your store working correctly, this.props will show you a function called "getCampuses", defined below
-//this getCampuses is going to be what dispatches your thunk---NOT store.dispatch
+
+
 const mapDispatchToProps = (dispatch) => {
     return {
         getCampuses: () => {
@@ -57,3 +68,12 @@ export default CampusContainer;
 
 
 
+// <ul>
+//     {
+//         this.props.campuses.map(campus => {
+//             return (
+//                 <li key={campus.id}>{campus.name}</li>
+//             );
+//         })
+//     }
+// </ul>
