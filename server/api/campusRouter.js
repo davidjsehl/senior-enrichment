@@ -30,6 +30,7 @@ apiRouter.post('/', (req, res, next) => {
     .then(campus => {
         res.send({message: 'Campus created successfully', campus: campus})
     })
+    .catch(next);
 })
 
 // apiRouter.put('/:campusId', (req, res, next) => {

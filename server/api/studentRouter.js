@@ -28,6 +28,7 @@ apiRouter.post('/', (req, res, next) => {
     .then(student => {
         res.send({ message: 'Student created successfully', student: student })
     })
+    .catch(next);
 })
 
 // apiRouter.delete('/', (req, res, next) => {
