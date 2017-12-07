@@ -1,3 +1,129 @@
-/* .nav {
-   display: flex
+img {
+    height: 300px;
+    width: 300px;
+}
+
+.nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 4em;
+   background-color: lightgray
+}
+
+.nav-item  {
+    margin: auto;
+    
+}
+
+.nav-link {
+    font-size: 2em;
+}
+
+.campus-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    
+}
+
+.campus-profile {
+    margin: auto;
+    justify-content: center;
+}
+
+.campus-profile-item {
+    display: flex;
+}
+
+.single-campus-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-student-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-campus-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .update-campus-form {
+    display: flex;
+    flex-direction: column;
 } */
+
+.student-form-container h3 {
+    font-size: 3em;
+    margin: auto;
+    align-self: center
+}
+
+.add-student-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-student-form input {
+    width: 30em;
+    height: 2.5em;
+    font-size: 18px;
+
+}
+
+
+
+.student-submit-btn {
+    width: 27.3em;
+    height: 2.5em;
+    font-size: 20px;
+ 
+}
+
+.campus-form-container h3 {
+    font-size: 3em;
+    margin: auto;
+    align-self: center
+}
+
+.add-campus-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-campus-form input {
+    width: 30em;
+    height: 2.5em;
+    font-size: 18px;
+}
+
+.campus-submit-btn {
+    width: 27.3em;
+    height: 2.5em;
+    font-size: 20px;
+
+ }
+h1, h2, h3, h4, h5 {
+    font-family: monospace;
+}
+
+table {
+    margin: auto;
+    width: 80%;
+}
+
+td {
+    text-align: center
+}
+
+th,
+td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+}
+
+

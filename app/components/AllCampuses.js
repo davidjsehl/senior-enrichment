@@ -31,8 +31,10 @@ export class AllCampuses extends Component {
                                 <Link to={`/campuses/${campus.id}`}>
                                     <img className="campus-image" src={campus.imageUrl}></img>
                                 </Link>
-                                <h2 className="campus-name">{campus.name}</h2>
-                                <h4 className="campus-description">{campus.description}</h4>
+                                <Link to={`/campuses/${campus.id}`}>
+                                    <h2 className="campus-name">{campus.name}</h2>
+                                </Link>
+                                <h5 className="campus-description">{campus.description}</h5>
                                 <button>Delete {campus.name}</button>
                             </div>
                         ))

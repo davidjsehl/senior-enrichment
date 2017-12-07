@@ -5,13 +5,19 @@ const Navbar = function (props) {
     return (
         <navbar className="nav">
             <h4 className="nav-item">
-                <Link to="/">HOME</Link>
+                <div className="nav-link">
+                    <Link to="/">HOME</Link>
+                </div>  
             </h4>
             <h4 className="nav-item">
-                <Link to="/campuses">CAMPUSES</Link>
+                <div className="nav-link">
+                    <Link to="/campuses">CAMPUSES</Link>
+                </div>
             </h4>
             <h4 className="nav-item">
-                <Link to="/students">STUDENTS</Link>
+                <div className="nav-link">
+                    <Link to="/students">STUDENTS</Link>
+                </div>
             </h4>
 
         </navbar>

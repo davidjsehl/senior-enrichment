@@ -31,6 +31,25 @@ apiRouter.post('/', (req, res, next) => {
     .catch(next);
 })
 
+apiRouter.put('/:studentId', (req, res, next) => {
+    const stuentId = req.params.studentId;
+    Student.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        gpa: req.body.gpa,
+        campusId: req.body.campusId
+    }, {
+        where: {
+            id: stuentId
+        }, 
+        returning: true
+    })
+    .then(student => {
+        res.send(student[1][0])
+    })
+})
+
 // apiRouter.delete('/', (req, res, next) => {
 
 // })

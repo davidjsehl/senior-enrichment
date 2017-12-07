@@ -47,10 +47,6 @@ class SingleCampus extends Component {
                     </form>
                     <button className="update-campus-btn">Submit</button>
                 </div>
-                
-
-
-
 
             </div>
         )

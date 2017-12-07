@@ -33,24 +33,24 @@ apiRouter.post('/', (req, res, next) => {
     .catch(next);
 })
 
-// apiRouter.put('/:campusId', (req, res, next) => {
-//     var campusId = req.params.id;
+apiRouter.put('/:campusId', (req, res, next) => {
+    var campusId = req.params.campusId;
     
-//     Campus.update({
-//         name: req.body.name,
-//         imageUrl: req.body.imageUrl,
-//         description: req.body.description 
-//     }, {
-//         where: {
-//             id: campusId
-//         },
-//         returning: true
-//     })
-//     .then(campus => {
-//         res.send(campus)
-//     })
-//     .catch(next)
-// })
+    Campus.update({
+        name: req.body.name,
+        imageUrl: req.body.imageUrl,
+        description: req.body.description 
+    }, {
+        where: {
+            id: campusId
+        },
+        returning: true
+    })
+    .then(campus => {
+        res.send(campus[1][0])
+    })
+    .catch(next)
+})
 // { message: 'Updated successfully', campus: campus[1][0] }
 
 
