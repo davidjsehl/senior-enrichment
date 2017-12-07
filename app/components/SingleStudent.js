@@ -9,8 +9,13 @@ export class SingleStudent extends Component {
     }
 
     render () {
+        const studentId = Number(this.props.match.params.campusId)
+        const studentsArr = this.props.students
+        const currentCampus = campusesArr.find((student) => {
+            return studentId === student.id
+        })
         return (
-            <div></div>
+            
         )
     }
 }

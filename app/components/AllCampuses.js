@@ -23,7 +23,7 @@ export class AllCampuses extends Component {
 
         return (
             <div>
-                <button><Link to="/add-campus">Add Campus</Link></button>
+                <button className="add-campus-btn"><Link to="/add-campus">Add Campus</Link></button>
                 <div className="campus-wrap">
                     {
                         this.props.campuses.map(campus => (
