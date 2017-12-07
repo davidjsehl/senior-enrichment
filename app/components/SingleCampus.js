@@ -35,8 +35,8 @@ class SingleCampus extends Component {
                     <h3>Add Student To This Campus</h3>
                     <form className="add-student-to-campus-form">
                         <input placeholder="Enter Student ID"></input>
+                        <button className="add-student-to-campus-btn">Submit</button>
                     </form>
-                    <button className="add-student-to-campus-btn">Submit</button>
                 </div>
                 <div className="update-campus-wrap">
                     <h3>Edit This Campus</h3>
@@ -44,8 +44,8 @@ class SingleCampus extends Component {
                         <input placeholder="Enter New Campus Name"></input>
                         <input placeholder="Enter New ImageUrl"></input>
                         <input placeholder="Enter New Description"></input>
+                        <button className="update-campus-btn">Submit</button>
                     </form>
-                    <button className="update-campus-btn">Submit</button>
                 </div>
 
             </div>

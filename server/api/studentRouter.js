@@ -2,7 +2,7 @@ const apiRouter = require('express').Router();
 const { Campus, Student } = require('../db/models');
 
 apiRouter.get('/', (req, res, next) => {
-    Student.findAll()
+    Student.findAll({include: {all: true}})
     .then(students => res.send(students))
     .catch(next);
 })
@@ -23,7 +23,8 @@ apiRouter.post('/', (req, res, next) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        gpa: req.body.gpa
+        gpa: req.body.gpa,
+        campusId: req.body.campusId
     })
     .then(student => {
         res.send({ message: 'Student created successfully', student: student })
@@ -41,7 +42,7 @@ apiRouter.put('/:studentId', (req, res, next) => {
         campusId: req.body.campusId
     }, {
         where: {
-            id: stuentId
+            id: studentId
         }, 
         returning: true
     })
@@ -50,9 +51,11 @@ apiRouter.put('/:studentId', (req, res, next) => {
     })
 })
 
-// apiRouter.delete('/', (req, res, next) => {
+apiRouter.delete('/:studentId', (req, res, next) => {
+    const studentId = Number(req.params.studentId)
+    Student.destroy({where: {id: studentId}})
 
-// })
+})
 
 
 module.exports = apiRouter

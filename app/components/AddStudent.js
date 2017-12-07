@@ -26,6 +26,20 @@ export class AddStudent extends Component {
 
     }
 
+    // handleInput(student, event) {
+    //     event.preventDefault()
+    //     student = this.state;
+    //     dispatch(addStudentThunk(student))
+    //     this.setState({
+    //         firstName: '',
+    //         lastName: '',
+    //         email: '',
+    //         gpa: '',
+    //         campusId: ''
+    //     })
+
+    // }
+
     // handleInput(event) {
     //     event.preventDefault();
     //     const student = this.state;
@@ -41,7 +55,7 @@ export class AddStudent extends Component {
             <div className="student-form-container">
                 <h3>Add Student</h3>
                 <div>
-                    <form onSubmit={(event) => {console.log('shit');this.props.handleSubmit(this.state, event)}} className="add-student-form">
+                    <form onSubmit={(event) => {this.props.handleSubmit(this.state, event)}} className="add-student-form">
                         <input type="text" 
                         placeholder="First Name (Required)"
                         name="firstName"
@@ -60,13 +74,13 @@ export class AddStudent extends Component {
                         onChange={this.handleInputChange}
                         value={this.state.email}
                         ></input>
-                        <input type="text" 
+                        <input type="number" 
                         placeholder="GPA"
                         name="gpa"
                         onChange={this.handleInputChange}
                         value={this.state.gpa}
                         ></input>
-                        <input type="text" 
+                        <input type="number" 
                         placeholder="Campus ID"
                         name="campusId"
                         onChange={this.handleInputChange}
@@ -82,15 +96,25 @@ export class AddStudent extends Component {
 }
 
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         handleSubmit: (student, event) => {
             // handleInput(event);
             event.preventDefault()
-            dispatch(addStudentThunk(student, ownProps.history))   
+            dispatch(addStudentThunk(student))   
         }
     }
 }
+
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//     return {
+//         handleSubmit: (student, event) => {
+//             // handleInput(event);
+//             event.preventDefault()
+//             dispatch(addStudentThunk(student, ownProps.history))
+//         }
+//     }
+// }
 
 const AddStudentContainer = connect(() => ({}), mapDispatchToProps)(AddStudent);
 export default AddStudentContainer;

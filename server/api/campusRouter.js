@@ -19,16 +19,13 @@ apiRouter.get('/:campusId', (req, res, next) => {
 })
 
 apiRouter.post('/', (req, res, next) => {
-    var name = req.body.name;
-    var url = req.body.imageUrl;
-    var description = req.body.description;
     Campus.create({
-        name: name, 
-        imageUrl: url,
-        description: description
+        name: req.body.name, 
+        imageUrl: req.body.imageUrl,
+        description: req.body.description
     })
     .then(campus => {
-        res.send({message: 'Campus created successfully', campus: campus})
+        res.send({ message: 'Campus created successfully', campus: campus })
     })
     .catch(next);
 })

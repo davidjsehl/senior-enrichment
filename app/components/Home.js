@@ -21,7 +21,7 @@ export default class Home extends Component {
                         <Switch>
                             <Route exact path="/campuses" component={AllCampuses} />
                             <Route exact path="/students" component={AllStudents} />
-                            {/* <Route path="/students/:studentId" component={SingleStudent} /> */}
+                            <Route path="/students/:studentId" component={SingleStudent} />
                             <Route exact path="/add-student" component={AddStudent} />
                             <Route exact path="/add-campus" component={AddCampus} />
                             <Route path="/campuses/:campusId" component={SingleCampus} />
