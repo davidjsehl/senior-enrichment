@@ -22,7 +22,7 @@ export class AllStudents extends Component {
 
     render() {
         console.log('rendered')
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div className="student-container">
                 <button className="add-student-btn">
@@ -47,7 +47,7 @@ export class AllStudents extends Component {
                                         <td>{student.id}</td>
                                         <td><Link to={`/students/${student.id}`}>{student.name}</Link></td>
                                         <td>{student.campusId}</td>
-                                        <td><button onClick={this.props.deleteStudent}>X</button></td>
+                                        <td><button onClick={() => this.props.deleteStudent(student)}>X</button></td>
                                     </tr>
                                 )
                             })
@@ -75,6 +75,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(getStudentsThunk())
         },
         deleteStudent: (student) => {
+            // console.log(student)
             dispatch(deleteStudentThunk(student))
         }
 
@@ -84,16 +85,3 @@ const mapDispatchToProps = (dispatch) => {
 const StudentContainer = connect(mapStateToProps, mapDispatchToProps)(AllStudents)
 export default StudentContainer;
 
-// <ul>
-            //     {
-            //         this.props.students.map(student => {
-            //             return (
-            //                 <li key={student.id}>{student.name}</li>
-            //             );
-            //         })
-            //     }
-            // </ul>
-
-// this.props.students.map(student => (
-                            //     <Student key={student.id} student={student} />
-                            // ))

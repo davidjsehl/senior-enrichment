@@ -52,8 +52,13 @@ apiRouter.put('/:studentId', (req, res, next) => {
 })
 
 apiRouter.delete('/:studentId', (req, res, next) => {
-    const studentId = Number(req.params.studentId)
+    const studentId = req.params.studentId
+    console.log(studentId)
     Student.destroy({where: {id: studentId}})
+    .then(() => {
+        res.json(studentId)
+    })
+  
 
 })
 

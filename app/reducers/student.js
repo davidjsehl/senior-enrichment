@@ -28,6 +28,8 @@ export function addStudent(student) {
 
 export function deleteStudent(student) {
     const action = { type: DELETE_STUDENT, student }
+    console.log('in action acretor', action)
+    return action;
 }
 
 // export function gotNewStudent(student) {
@@ -62,6 +64,7 @@ export function addStudentThunk (student, history) {
 }
 
 export function deleteStudentThunk (student) {
+    // console.log(student)
     return function thunk (dispatch) {
         return axios.delete(`./api/students/${student.id}`)
         .then(() => dispatch(deleteStudent(student)))
