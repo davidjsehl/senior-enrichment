@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCampusesThunk } from '../reducers/campus.js';
+import { getCampusesThunk, deleteCampusThunk } from '../reducers/campus.js';
 import axios from 'axios';
 
 export class AllCampuses extends Component {
@@ -35,7 +35,7 @@ export class AllCampuses extends Component {
                                     <h2 className="campus-name">{campus.name}</h2>
                                 </Link>
                                 <h5 className="campus-description">{campus.description}</h5>
-                                <button>Delete {campus.name}</button>
+                                <button onClick={() => this.props.deleteCampus(campus)}>Delete {campus.name}</button>
                             </div>
                         ))
                     }
@@ -60,6 +60,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getCampuses: () => {
             dispatch(getCampusesThunk())
+        },
+        deleteCampus: (campus) => {
+            dispatch(deleteCampusThunk(campus))
         }
         
     }

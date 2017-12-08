@@ -11,6 +11,7 @@ const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
 // const GOT_NEW_STUDENT ='GOT_NEW_STUDENT';
+const SELECTED_STUDENT = 'SELECTED_STUDENT'
 
 
 
@@ -28,7 +29,12 @@ export function addStudent(student) {
 
 export function deleteStudent(student) {
     const action = { type: DELETE_STUDENT, student }
-    console.log('in action acretor', action)
+    // console.log('in action acretor', action)
+    return action;
+}
+
+export function selectedStudent(campus) {
+    const action = { type: SELECTED_CAMPUS, campus };
     return action;
 }
 

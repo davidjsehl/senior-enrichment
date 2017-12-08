@@ -50,6 +50,16 @@ apiRouter.put('/:campusId', (req, res, next) => {
 })
 // { message: 'Updated successfully', campus: campus[1][0] }
 
+apiRouter.delete('/:campusId', (req, res, next) => {
+    const campusId = req.params.campusId
+    // console.log(studentId)
+    Campus.destroy({ where: { id: campusId } })
+        .then(() => {
+            res.json(campusId)
+        })
+
+
+})
 
 
 // apiRouter.delete()

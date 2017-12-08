@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { getStudentsThunk } from '../reducers/student.js';
 
 class SingleCampus extends Component {
 
@@ -9,21 +10,30 @@ class SingleCampus extends Component {
         super(props)
     }
 
-    // componentDidMount () {
-
-    // }
+    componentDidMount () {
+        this.props.getStudents()
+        this.props.getSelectedCampus()
+    }
     
 
     render () {
+
+        
 
         const campusId = Number(this.props.match.params.campusId)
         const campusesArr = this.props.campuses
         const currentCampus = campusesArr.find((campus) => {
             return campusId === campus.id
         })
+
+        const studentsArr = this.props.students
+        const attendingStudents = studentsArr.filter(student => {
+            return student.campusId === currentCampus.id
+        })
+        console.log('----------', attendingStudents)
         // console.log(currentCampus)
 
-        // console.log(this.props)
+        console.log(this.props)
 
         return (
             
@@ -57,8 +67,16 @@ class SingleCampus extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        campuses: state.campuses
+        campuses: state.campuses,
+        students: state.students
     }
 }
 
-export default connect(mapStateToProps)(SingleCampus)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getStudents: () => 
+            dispatch(getStudentsThunk())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleCampus)
