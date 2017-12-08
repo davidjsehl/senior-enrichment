@@ -26,7 +26,7 @@ export class AddCampus extends Component {
         return (
             <div className="campus-form-container">
                 <h3>Add Campus</h3>
-                <form onSubmit={(event) => {this.props.handleSubmit(this.state, event)}} className="add-campus-form">
+                <form onSubmit={this.props.handleSubmit.bind(this)} className="add-campus-form">
                     <input type="text" 
                     placeholder="Campus Name"
                     name="name"
@@ -55,9 +55,21 @@ export class AddCampus extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleSubmit: (campus, event) => {
+        handleSubmit: function (event) {
             event.preventDefault()
+            const name = this.state.name;
+            const imageUrl = this.state.imageUrl;
+            const description = this.state.description;
+            
+            const campus = {name, imageUrl, description};
+
             dispatch(addCampusThunk(campus))
+            this.setState({
+                name: '',
+                imageUrl: '',
+                description: ''
+            })
+
         }
     }
 }

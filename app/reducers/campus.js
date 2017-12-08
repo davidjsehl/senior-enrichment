@@ -31,6 +31,12 @@ export function deleteCampus(campus) {
 
 export function selectedCampus(campus) {
     const action = { type: SELECTED_CAMPUS, campus}
+    return action;
+}
+
+export function updateCampus(campus) {
+    const action = { type: UPDATE_CAMPUS, campus }
+    return action;
 }
 
 // THUNK CREATORS
@@ -57,7 +63,24 @@ export function addCampusThunk(campus) {
     }
 }
 
+// export function getSelectedCampusThunk(campusId) {
+//     return function thunk(dispatch) {
+//         return axios.get('/api/campuses/campusId')
+//         .then(() => dispatch(selectedCampus(campus)))
+//     }
+// }
 
+export function updateCampusThunk(campus) {
+    console.log(campus)
+    return function thunk(dispatch) {
+        return axios.put(`/api/campuses/${campus.id}`, campus)
+            .then(res => res.data)
+            .then(campus => {
+                const action = updateCampus(campus)
+                dispatch(action)
+            })
+    }
+}
 
 export function deleteCampusThunk(campus) {
     return function thunk(dispatch) {
@@ -88,6 +111,13 @@ export const campusReducer = (state = [], action) => {
             })
             newState.splice(campusToDelete, 1)
             return newState;
+        case SELECTED_CAMPUS:
+            return action.campus
+        case UPDATE_CAMPUS:
+            const updatedState = Object.assign([], state)
+            return updatedState.filter(campus => {
+                return campus.id !== action.campus.id
+            })
         default:
             return state;
     }

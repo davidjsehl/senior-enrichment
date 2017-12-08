@@ -44,7 +44,7 @@ apiRouter.put('/:campusId', (req, res, next) => {
         returning: true
     })
     .then(campus => {
-        res.send(campus[1][0])
+        res.send(campus)
     })
     .catch(next)
 })

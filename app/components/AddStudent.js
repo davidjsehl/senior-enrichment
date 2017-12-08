@@ -26,28 +26,6 @@ export class AddStudent extends Component {
 
     }
 
-    // handleInput(student, event) {
-    //     event.preventDefault()
-    //     student = this.state;
-    //     dispatch(addStudentThunk(student))
-    //     this.setState({
-    //         firstName: '',
-    //         lastName: '',
-    //         email: '',
-    //         gpa: '',
-    //         campusId: ''
-    //     })
-
-    // }
-
-    // handleInput(event) {
-    //     event.preventDefault();
-    //     const student = this.state;
-    //     dispatch(addStudentThunk(student, ownProps.history))
-
-    // }
-
-
     render() {
         console.log(this.state)
         console.log(this.props)
@@ -55,7 +33,7 @@ export class AddStudent extends Component {
             <div className="student-form-container">
                 <h3>Add Student</h3>
                 <div>
-                    <form onSubmit={(event) => {this.props.handleSubmit(this.state, event)}} className="add-student-form">
+                    <form onSubmit={this.props.handleSubmit.bind(this)} className="add-student-form">
                         <input type="text" 
                         placeholder="First Name (Required)"
                         name="firstName"
@@ -97,25 +75,32 @@ export class AddStudent extends Component {
 
 
 const mapDispatchToProps = (dispatch) => {
+
     return {
-        handleSubmit: (student, event) => {
-            // handleInput(event);
+        handleSubmit: function (event) {
+            // console.log('------------', event, this)
             event.preventDefault()
-            dispatch(addStudentThunk(student))   
+            const firstName = this.state.firstName;
+            const lastName = this.state.lastName;
+            const email = this.state.email;
+            const gpa = this.state.gpa;
+            const campusId = this.state.campusId
+            const student = {firstName, lastName, email, gpa, campusId}
+        
+            dispatch(addStudentThunk(student)) 
+            this.setState({
+                firstName: '',
+                lastName: '',
+                email: '',
+                gpa: '',
+                campusId: ''
+            })  
         }
     }
 }
 
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//     return {
-//         handleSubmit: (student, event) => {
-//             // handleInput(event);
-//             event.preventDefault()
-//             dispatch(addStudentThunk(student, ownProps.history))
-//         }
-//     }
-// }
 
 const AddStudentContainer = connect(() => ({}), mapDispatchToProps)(AddStudent);
 export default AddStudentContainer;
+
 

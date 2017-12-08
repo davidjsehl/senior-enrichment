@@ -31,9 +31,9 @@ export class AllCampuses extends Component {
                                 <Link to={`/campuses/${campus.id}`}>
                                     <img className="campus-image" src={campus.imageUrl}></img>
                                 </Link>
-                                <Link to={`/campuses/${campus.id}`}>
+                                {/* <Link to={`/campuses/${campus.id}`}> */}
                                     <h2 className="campus-name">{campus.name}</h2>
-                                </Link>
+                                {/* </Link> */}
                                 <h5 className="campus-description">{campus.description}</h5>
                                 <button onClick={() => this.props.deleteCampus(campus)}>Delete {campus.name}</button>
                             </div>

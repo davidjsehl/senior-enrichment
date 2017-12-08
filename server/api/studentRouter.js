@@ -32,8 +32,10 @@ apiRouter.post('/', (req, res, next) => {
     .catch(next);
 })
 
+
 apiRouter.put('/:studentId', (req, res, next) => {
-    const stuentId = req.params.studentId;
+    const studentId = req.params.studentId;
+    console.log(req.body.firstName)
     Student.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -47,7 +49,8 @@ apiRouter.put('/:studentId', (req, res, next) => {
         returning: true
     })
     .then(student => {
-        res.send(student[1][0])
+        // res.send(student[1][0])
+        res.send(student)
     })
 })
 
