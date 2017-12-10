@@ -15,7 +15,6 @@ export class AddStudent extends Component {
             campusId: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
-        // this.handleInput = this.handleInput.bind(this);
     }
 
     handleInputChange(event) {
@@ -27,8 +26,7 @@ export class AddStudent extends Component {
     }
 
     render() {
-        console.log(this.state)
-        console.log(this.props)
+    
         return (
             <div className="student-form-container">
                 <h3>Add Student</h3>
@@ -78,7 +76,6 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         handleSubmit: function (event) {
-            // console.log('------------', event, this)
             event.preventDefault()
             const firstName = this.state.firstName;
             const lastName = this.state.lastName;

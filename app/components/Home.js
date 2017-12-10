@@ -7,6 +7,7 @@ import SingleStudent from './SingleStudent';
 import AddStudent from './AddStudent';
 import AddCampus from './AddCampus';
 import SingleCampus from './SingleCampus';
+import HomePage from './HomePage';
 
 export default class Home extends Component {
    
@@ -25,6 +26,7 @@ export default class Home extends Component {
                             <Route exact path="/add-student" component={AddStudent} />
                             <Route exact path="/add-campus" component={AddCampus} />
                             <Route path="/campuses/:campusId" component={SingleCampus} />
+                            <Route exact path="/" component={HomePage} />
                         </Switch>
                     </div>
                 </div>

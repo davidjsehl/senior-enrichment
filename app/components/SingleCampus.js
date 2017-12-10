@@ -20,10 +20,7 @@ class SingleCampus extends Component {
 
     componentDidMount () {
         this.props.getStudents()
-        console.log(this.props);
-        console.log(this.props.location.pathname)
         const id = this.props.location.pathname.slice(10)
-        console.log(id)
         this.setState({
             id: id,
             name: '',
@@ -42,8 +39,6 @@ class SingleCampus extends Component {
 
     render () {
         
-        
-        console.log(this.state);
         const campusId = Number(this.props.match.params.campusId)
         const campusesArr = this.props.campuses
         const currentCampus = campusesArr.find((campus) => {
@@ -61,68 +56,66 @@ class SingleCampus extends Component {
         
 
         return (
-            
             <div className="single-campus-wrap">
-                <h1>{currentCampus.name}</h1>
-                <img src={currentCampus.imageUrl}></img>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Student ID</th>
-                            <th>Name</th>
-                            <th>Campus</th>
-                            <th>Delete?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            attendingStudents.map(student => {
-                                return (
-                                    <tr key={student.id}>
-                                        <td>{student.id}</td>
-                                        <td><Link to={`/students/${student.id}`}>{student.name}</Link></td>
-                                        <td>{student.campusId}</td>
-                                        <td><button onClick={() => this.props.deleteStudent(student)}>X</button></td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
+                <div>
+                    <h1 id="campus-name-header">{currentCampus.name}</h1>
+                    <div id="img-table-wrap">
+                        <img src={currentCampus.imageUrl}></img>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>GPA</th>
+                                    <th>Delete?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    attendingStudents.map(student => {
+                                        return (
+                                            <tr key={student.id}>
+                                                <td>{student.id}</td>
+                                                <td><Link to={`/students/${student.id}`}>{student.name}</Link></td>
+                                                <td>{student.gpa}</td>
+                                                <td><button onClick={() => this.props.deleteStudent(student)}>X</button></td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 
+                    <div className="update-campus-wrap">
+                        <h3 id="edit-campus-header">Edit This Campus</h3>
+                        <form onSubmit={this.props.handleSubmit.bind(this)} className="edit-campus-form">
+                            <input className="update-campus-field" 
+                            type="text" 
+                            placeholder="Enter New Campus Name"
+                            name="name"
+                            onChange={this.handleInputChange}
+                            value={this.state.name}
+                            ></input>
+                            <input className="update-campus-field"
+                            type="text"
+                            placeholder="Enter New ImageUrl"
+                            name="imageUrl"
+                            onChange={this.handleInputChange}
+                            value={this.state.imageUrl}
+                            ></input>
+                            <input className="update-campus-field"
+                            type="text"
+                            placeholder="Enter New Description"
+                            name="description"
+                            onChange={this.handleInputChange}
+                            value={this.state.description}
+                            ></input>
+                            <button type ="submit" className="update-campus-btn">Submit</button>
+                        </form>
+                    </div>
 
-                <div className="add-student-wrap">
-                    <h3>Add Student To This Campus</h3>
-                    <form className="add-student-to-campus-form">
-                        <input placeholder="Enter Student ID"></input>
-                        <button className="add-student-to-campus-btn">Submit</button>
-                    </form>
                 </div>
-                <div className="update-campus-wrap">
-                    <h3>Edit This Campus</h3>
-                    <form onSubmit={this.props.handleSubmit.bind(this)} className="edit-campus-form">
-                        <input type="text" 
-                        placeholder="Enter New Campus Name"
-                        name="name"
-                        onChange={this.handleInputChange}
-                        value={this.state.name}
-                        ></input>
-                        <input type="text"
-                        placeholder="Enter New ImageUrl"
-                        name="imageUrl"
-                        onChange={this.handleInputChange}
-                        value={this.state.imageUrl}
-                        ></input>
-                        <input type="text"
-                        placeholder="Enter New Description"
-                        name="description"
-                        onChange={this.handleInputChange}
-                        value={this.state.description}
-                        ></input>
-                        <button type ="submit" className="update-campus-btn">Submit</button>
-                    </form>
-                </div>
-
             </div>
         )
     }

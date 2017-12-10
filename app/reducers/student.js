@@ -116,11 +116,6 @@ export function studentReducer(state = [], action) {
             return updatedState.filter(student => {
                 return student.id !== action.student.id
             })
-            // const studentToUpdate = state.findIndex(student => {
-            //     return student.id === action.student.id
-            // })
-            // updatedState.slice(0, studentToUpdate)
-            // return updatedState
         default:
             return state;
     }

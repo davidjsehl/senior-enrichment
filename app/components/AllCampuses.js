@@ -6,13 +6,6 @@ import axios from 'axios';
 
 export class AllCampuses extends Component {
 
-    // constructor (props) {
-    //     super(props)
-    //     // this.state = {
-    //     //     campuses: []
-    //     // }
-    // }
-
     componentDidMount () {
 
         this.props.getCampuses()
@@ -20,7 +13,7 @@ export class AllCampuses extends Component {
     }
 
     render () {
-
+        console.log('we here')
         return (
             <div>
                 <button className="add-campus-btn"><Link to="/add-campus">Add Campus</Link></button>
@@ -28,14 +21,14 @@ export class AllCampuses extends Component {
                     {
                         this.props.campuses.map(campus => (
                             <div className="campus-profile" key={campus.id}>
-                                <Link to={`/campuses/${campus.id}`}>
+                                <Link to={`/campuses/${campus.id}`} style={{ color: 'darkPurple', textDecoration: 'none' }}>
                                     <img className="campus-image" src={campus.imageUrl}></img>
                                 </Link>
-                                {/* <Link to={`/campuses/${campus.id}`}> */}
+                                <Link to={`/campuses/${campus.id}`} style={{ color: 'darkPurple', textDecoration: 'none' }}>
                                     <h2 className="campus-name">{campus.name}</h2>
-                                {/* </Link> */}
+                                </Link>
                                 <h5 className="campus-description">{campus.description}</h5>
-                                <button onClick={() => this.props.deleteCampus(campus)}>Delete {campus.name}</button>
+                                <button className="delete-campus-btn" onClick={() => this.props.deleteCampus(campus)}>Delete {campus.name}</button>
                             </div>
                         ))
                     }
@@ -71,14 +64,3 @@ const mapDispatchToProps = (dispatch) => {
 const CampusContainer = connect(mapStateToProps, mapDispatchToProps)(AllCampuses)
 export default CampusContainer;
 
-
-
-// <ul>
-//     {
-//         this.props.campuses.map(campus => {
-//             return (
-//                 <li key={campus.id}>{campus.name}</li>
-//             );
-//         })
-//     }
-// </ul>

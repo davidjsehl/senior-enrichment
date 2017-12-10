@@ -20,10 +20,7 @@ export class SingleStudent extends Component {
     }
 
     componentDidMount () {
-        console.log(this.props);
-        console.log(this.props.location.pathname)
         const id = this.props.location.pathname.slice(10)
-        console.log(id)
         this.setState({
             id: id,
             firstName: '',
@@ -48,7 +45,6 @@ export class SingleStudent extends Component {
         const currentStudent = studentsArr.find((student) => {
             return studentId === student.id
         })
-        // console.log(this.state)
         
         return (
             <div className="single-student-wrap">

@@ -22,7 +22,6 @@ export class AddCampus extends Component {
     }
 
     render () {
-        console.log(this.state)
         return (
             <div className="campus-form-container">
                 <h3>Add Campus</h3>
